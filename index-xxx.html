@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Welfare and Self-Reliance Services Philippines</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/homepage.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Welfare and Self-Reliance Services Philippines</h1>
+        <p>Empowering lives through welfare and self-reliance</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products &amp; Services</a></li>
+            <li><a href="#">Success Stories</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+    <div class="slider" id="slider">
+        <button class="slider-btn prev" id="prevBtn">&#10094;</button>
+        <div class="slides" id="slides">
+            <div class="slide"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80" alt="Community Service"></div>
+            <div class="slide"><img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=900&q=80" alt="Training"></div>
+            <div class="slide"><img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=900&q=80" alt="Success Story"></div>
+            <div class="slide"><img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=900&q=80" alt="Products"></div>
+            <div class="slide"><img src="images/contact-us.jpg?auto=format&fit=crop&w=900&q=80" alt="Contact"></div>
+        </div>
+        <button class="slider-btn next" id="nextBtn">&#10095;</button>
+        <div class="slider-dots" id="sliderDots"></div>
+    </div>
+    <main>
+        <h2>Welcome to Welfare and Self-Reliance Services Philippines</h2>
+        <p>
+            We are dedicated to uplifting communities through welfare programs and self-reliance initiatives. Explore our products and services, read inspiring success stories, and learn how you can be part of our mission to empower lives across the Philippines.
+        </p>
+    </main>
+    <footer>
+        <div class="footer-icons">
+            <a href="https://x.com/" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://wsrphilippines.org/" target="_blank" title="Website"><i class="fas fa-globe"></i></a>
+            <a href="mailto:contact@wsrphilippines.org" title="Contact"><i class="fas fa-envelope"></i></a>
+        </div>
+        <small>&copy; 2024 Welfare and Self-Reliance Services Philippines. All rights reserved.</small>
+    </footer>
+    <script>
+        // Slider logic
+        const slides = document.getElementById('slides');
+        const slideElements = slides.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const sliderDots = document.getElementById('sliderDots');
+        let currentIndex = 0;
+        const totalSlides = slideElements.length;
+        let autoSlideInterval;
+
+        function showSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            slides.style.transform = `translateX(-${index * 100}%)`;
+            currentIndex = index;
+            updateDots();
+        }
+
+        function updateDots() {
+            sliderDots.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('span');
+                dot.className = 'slider-dot' + (i === currentIndex ? ' active' : '');
+                dot.onclick = () => {
+                    showSlide(i);
+                    resetAutoSlide();
+                };
+                sliderDots.appendChild(dot);
+            }
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+            resetAutoSlide();
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+            resetAutoSlide();
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(() => showSlide(currentIndex + 1), 4000);
+        }
+
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Initialize
+        showSlide(0);
+        resetAutoSlide();
+    </script>
+</body>
+</html>

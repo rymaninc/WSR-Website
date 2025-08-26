@@ -1,0 +1,86 @@
+/* Basic menu styles */
+.menu {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    background: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.menu-item {
+    padding: 16px 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-bottom: 1px solid #333;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item:hover,
+.menu-item:focus {
+    background: #444;
+}
+
+.menu-item.active {
+    background: #0078d4;
+    color: #fff;
+}
+
+/* Dropdown submenu */
+.menu-item.has-submenu {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background: #333;
+    min-width: 180px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.12);
+    z-index: 10;
+}
+
+.menu-item.has-submenu:hover .submenu,
+.menu-item.has-submenu:focus-within .submenu {
+    display: flex;
+}
+
+.submenu .menu-item {
+    padding: 12px 18px;
+    color: #eee;
+    background: none;
+    border-bottom: 1px solid #444;
+}
+
+.submenu .menu-item:last-child {
+    border-bottom: none;
+}
+
+.submenu .menu-item:hover,
+.submenu .menu-item:focus {
+    background: #555;
+    color: #fff;
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+    .menu {
+        width: 100%;
+        border-radius: 0;
+    }
+    .submenu {
+        position: static;
+        min-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}

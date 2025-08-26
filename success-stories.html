@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success Stories</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/success-stories.css">
+    <script src="scripts/menu.js"></script>
+    <script src="scripts/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Success Stories</h1>
+        <div class="stories">
+            <!-- Story 1 -->
+            <div class="story-card" data-story="1">
+                <div class="story-graphic">
+                    <!-- SVG graphic -->
+                    <svg width="80" height="80" viewBox="0 0 80 80">
+                        <circle cx="40" cy="40" r="36" fill="#7abaff"/>
+                        <path d="M25 45l10 10 20-20" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="story-title">Jane's Journey to Tech</div>
+                <div class="story-text">From retail to software developer in 12 months. See how Jane made the leap!</div>
+                <span class="read-more" data-story="1">Read More</span>
+            </div>
+            <!-- Story 2 -->
+            <div class="story-card" data-story="2">
+                <div class="story-graphic">
+                    <svg width="80" height="80" viewBox="0 0 80 80">
+                        <rect x="10" y="10" width="60" height="60" rx="15" fill="#ffd86b"/>
+                        <circle cx="40" cy="40" r="18" fill="#fff"/>
+                        <text x="40" y="46" text-anchor="middle" font-size="22" fill="#ffd86b" font-family="Arial">A+</text>
+                    </svg>
+                </div>
+                <div class="story-title">Alex's Academic Triumph</div>
+                <div class="story-text">Alex overcame challenges to graduate top of his class. Discover his strategies.</div>
+                <span class="read-more" data-story="2">Read More</span>
+            </div>
+            <!-- Story 3 -->
+            <div class="story-card" data-story="3">
+                <div class="story-graphic">
+                    <svg width="80" height="80" viewBox="0 0 80 80">
+                        <ellipse cx="40" cy="40" rx="36" ry="28" fill="#a7e9af"/>
+                        <path d="M40 20v40M20 40h40" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="story-title">Sam's Startup Success</div>
+                <div class="story-text">Sam turned a simple idea into a thriving business. Learn how he did it!</div>
+                <span class="read-more" data-story="3">Read More</span>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal" id="storyModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="modal-title" id="modalTitle"></div>
+            <div class="modal-text" id="modalText"></div>
+        </div>
+    </div>
+    <script>
+        const stories = {
+            1: {
+                title: "Jane's Journey to Tech",
+                text: "Jane started her career in retail, but always dreamed of working in technology. Through online courses, mentorship, and perseverance, she landed her first developer job in just one year. Her advice: 'Never stop learning and believe in yourself!'"
+            },
+            2: {
+                title: "Alex's Academic Triumph",
+                text: "Despite facing personal and academic challenges, Alex developed effective study habits and sought support from peers and professors. His dedication paid off when he graduated top of his class. He says, 'Consistency and asking for help are key.'"
+            },
+            3: {
+                title: "Sam's Startup Success",
+                text: "Sam noticed a gap in the market and launched a small online service. With hard work and customer feedback, his startup grew rapidly. Sam shares, 'Start small, listen to your users, and adapt quickly.'"
+            }
+        };
+
+        document.querySelectorAll('.read-more, .story-card').forEach(el => {
+            el.addEventListener('click', function(e) {
+                const storyId = this.getAttribute('data-story');
+                if (storyId && stories[storyId]) {
+                    document.getElementById('modalTitle').textContent = stories[storyId].title;
+                    document.getElementById('modalText').textContent = stories[storyId].text;
+                    document.getElementById('storyModal').style.display = 'flex';
+                }
+            });
+        });
+
+        document.getElementById('closeModal').onclick = function() {
+            document.getElementById('storyModal').style.display = 'none';
+        };
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('storyModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WSR Products</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/products-services.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="scripts/menu.js"></script>
+    </head>
+<body>
+    <div class="container">
+        <h1>WSR Products</h1>
+        <div class="products">
+            <div class="product-card" tabindex="0" data-product="Welfare Services">
+                <div class="product-title">Welfare Services</div>
+                <div class="product-info">
+                    Support for basic needs, financial assistance, and resources to help individuals and families improve their well-being.
+                </div>
+            </div>
+            <div class="product-card" tabindex="0" data-product="Self-Reliance Courses">
+                <div class="product-title">Self-Reliance Courses</div>
+                <div class="product-info">
+                    Courses and workshops designed to help individuals develop skills for personal growth, employment, and financial independence.
+                </div>
+            </div>
+            <div class="product-card" tabindex="0" data-product="Education">
+                <div class="product-title">Education</div>
+                <div class="product-info">
+                    Access to educational resources, scholarships, and guidance for lifelong learning and academic achievement.
+                </div>
+            </div>
+            <div class="product-card" tabindex="0" data-product="Employment">
+                <div class="product-title">Employment</div>
+                <div class="product-info">
+                    Job search assistance, career counseling, and training programs to help individuals find and retain meaningful employment.
+                </div>
+            </div>
+            <div class="product-card" tabindex="0" data-product="Family Services">
+                <div class="product-title">Family Services</div>
+                <div class="product-info">
+                    Support for families including counseling, parenting resources, and programs to strengthen family relationships.
+                </div>
+            </div>
+            <div class="product-card" tabindex="0" data-product="Humanitarian">
+                <div class="product-title">Humanitarian</div>
+                <div class="product-info">
+                    Relief efforts, community service, and initiatives to assist those affected by disasters or in need of humanitarian aid.
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Interactive product info toggle
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                document.querySelectorAll('.product-card').forEach(c => {
+                    if (c !== card) c.classList.remove('active');
+                });
+                card.classList.toggle('active');
+            });
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+        });
+        // Close info when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.product-card')) {
+                document.querySelectorAll('.product-card').forEach(c => c.classList.remove('active'));
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+/* smaller.css - Styles for smaller screens or elements */
+
+body {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 90%;
+}
+
+.container, .content {
+    padding: 10px;
+    margin: 0 auto;
+    max-width: 95vw;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+nav ul {
+    flex-direction: column;
+    gap: 8px;
+}
+
+.button, button, input[type="submit"] {
+    font-size: 0.9em;
+    padding: 6px 12px;
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 12px;
+    }
+    .container, .content {
+        padding: 5px;
+    }
+    nav ul {
+        gap: 4px;
+    }
+}
